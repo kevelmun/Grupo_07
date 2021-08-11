@@ -5,7 +5,7 @@
  */
 package objects;
 
-import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
@@ -13,25 +13,11 @@ import javafx.scene.layout.StackPane;
  *
  * @author Elix
  */
-public class Sign {
-    private String id;
-    private ImageView image;
-
-    public Sign(String id) {
-        this.id = id;
-    }
-
-
-
-    public ImageView getImage() {
-        return image;
-    }
-
-    public void setImage(ImageView image) {
-        this.image = image;
-    }
-
-
+public class O extends Sign{
     
+    public O(String id) {
+        super(id);
+        this.setImage(new ImageView(new Image("/src/main/resources/pics/O.png")));
+    }
     
 }
