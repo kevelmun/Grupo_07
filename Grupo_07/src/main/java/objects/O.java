@@ -17,7 +17,12 @@ public class O extends Sign{
     
     public O(String id) {
         super(id);
-        this.setImage(new ImageView(new Image("/src/main/resources/pics/O.png")));
+        Image i= new Image("/pics/O.png");
+       
+        ImageView im =new ImageView(i);
+        im.setFitHeight(125);
+        im.setFitWidth(125);
+        this.setImage(im);
     }
     
 }

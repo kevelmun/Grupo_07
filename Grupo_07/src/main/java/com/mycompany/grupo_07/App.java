@@ -14,10 +14,10 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    public static String pathJuego = "src/main/resources/files/options.txt";
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("primary"), 750, 550);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="BackG" alignment="CENTER" prefHeight="536.0" prefWidth="742.0" spacing="20.0" stylesheets="@../../../files/Estilos.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.grupo_07.SecondaryController">
+<VBox id="BackG" alignment="CENTER" prefHeight="536.0" prefWidth="742.0" spacing="20.0" stylesheets="@../../../files/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.grupo_07.SecondaryController">
     <children>
         <Label text="TRES EN RAYA" textFill="WHITE">
          <font>
@@ -18,16 +18,16 @@
          </font></Label>
       <Pane id="Table" fx:id="paneID" prefHeight="460.0" prefWidth="702.0" stylesheets="@../../../files/Estilos.css">
          <children>
-            <GridPane fx:id="gPaneID" alignment="CENTER" layoutX="106.0" layoutY="37.0" maxHeight="326.0" maxWidth="465.0" minHeight="326.0" minWidth="465.0" prefHeight="326.0" prefWidth="465.0">
+            <GridPane fx:id="gPaneID" alignment="CENTER" layoutX="88.0" layoutY="46.0" maxHeight="326.0" maxWidth="523.0" minHeight="301.0" minWidth="465.0" prefHeight="301.0" prefWidth="475.0">
               <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="294.79998779296875" minWidth="10.0" prefWidth="165.59998779296876" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="219.20001220703125" minWidth="0.0" prefWidth="124.79996337890626" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="298.39996337890625" minWidth="10.0" prefWidth="176.00003662109373" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="294.79998779296875" minWidth="10.0" prefWidth="174.4" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="219.20001220703125" minWidth="10.0" prefWidth="143.799951171875" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="298.39996337890625" minWidth="10.0" prefWidth="163.000048828125" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="160.5999740600586" minHeight="10.0" prefHeight="123.00000610351563" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="163.00000610351563" minHeight="10.0" prefHeight="90.19999389648436" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="255.7999938964844" minHeight="10.0" prefHeight="120.39998779296872" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="160.5999740600586" minHeight="10.0" prefHeight="97.79998779296875" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="163.00000610351563" minHeight="10.0" prefHeight="107.79999389648438" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="255.7999938964844" minHeight="10.0" prefHeight="97.40000610351564" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
          </children>
