@@ -20,8 +20,8 @@ public class O extends Sign{
         Image i= new Image("/pics/O.png");
        
         ImageView im =new ImageView(i);
-        im.setFitHeight(125);
-        im.setFitWidth(125);
+        im.setFitHeight(90);
+        im.setFitWidth(90);
         this.setImage(im);
     }
     

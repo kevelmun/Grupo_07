@@ -5,8 +5,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -26,7 +24,7 @@ public class SecondaryController {
     
     @FXML
     private void switchToPrimary() throws IOException {
-        /*
+        
         O o = new O("0");
         O o1 = new O("1");
         O o2 = new O("2");
@@ -44,27 +42,28 @@ public class SecondaryController {
         gPaneID.add(o5.getImage(), 1, 2);
         gPaneID.add(o6.getImage(), 2, 0);
         gPaneID.add(o7.getImage(), 2, 1);
-        gPaneID.add(o8.getImage(), 2, 2);*/
+        gPaneID.add(o8.getImage(), 2, 2);
         
         gPaneID.setAlignment(Pos.CENTER);
-        cheackBox();
+        //cheackBox();
         //App.setRoot("primary");
         
     }
-    
     
     private void cheackBox(){
         gPaneID.getChildren().forEach(item -> {
             item.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
-                public void handle(MouseEvent t) {
-                    gPaneID.add(new O("1").getImage(), 0, 0);
+                public void handle(MouseEvent t) { 
+                    gPaneID.getChildren().add(new O("1").getImage());
                 }
             });
 
         });
     }
     
+ 
+    }
+    
 
     
-}

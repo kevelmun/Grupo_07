@@ -1,1 +1,1 @@
-x,player
+o,player
