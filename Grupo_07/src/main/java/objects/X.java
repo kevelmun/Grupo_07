@@ -19,7 +19,7 @@ public class X extends Sign{
         super(id);
         Image i= new Image("/pics/X.png");
        
-        ImageView im =new ImageView();
+        ImageView im =new ImageView(i);
         im.setFitHeight(50);
         im.setFitWidth(50);
         

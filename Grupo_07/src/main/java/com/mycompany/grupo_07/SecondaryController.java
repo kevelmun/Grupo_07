@@ -1,17 +1,24 @@
 package com.mycompany.grupo_07;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import javafx.event.EventHandler;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
+import javafx.fxml.Initializable;
+
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import objects.O;
+
+import objects.Tablero;
 
 
-public class SecondaryController {
+public class SecondaryController implements Initializable{
 
     @FXML
     private Pane paneID;
@@ -21,49 +28,57 @@ public class SecondaryController {
     private Button secondaryButton;
     
     
+    private String turno;
+    private int valorjugador;
+    private int valorComputador;
     
-    @FXML
-    private void switchToPrimary() throws IOException {
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Tablero t=new Tablero(gPaneID);
+        t.crearTablero();
         
-        O o = new O("0");
-        O o1 = new O("1");
-        O o2 = new O("2");
-        O o3 = new O("3");
-        O o4 = new O("4");
-        O o5 = new O("5");
-        O o6 = new O("6");
-        O o7 = new O("7");
-        O o8 = new O("8");
-        gPaneID.add(o.getImage(), 0, 0);
-        gPaneID.add(o1.getImage(), 0, 1);
-        gPaneID.add(o2.getImage(), 0, 2);
-        gPaneID.add(o3.getImage(), 1, 0);
-        gPaneID.add(o4.getImage(), 1, 1);
-        gPaneID.add(o5.getImage(), 1, 2);
-        gPaneID.add(o6.getImage(), 2, 0);
-        gPaneID.add(o7.getImage(), 2, 1);
-        gPaneID.add(o8.getImage(), 2, 2);
+        try {
+            readData();
+            t.setValorJugador(valorjugador);
+            t.setValorcomputador(valorComputador);
+            
+            if(this.turno.equals("machine")){
+                t.jugadaMachine();
+                
+                
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         
-        gPaneID.setAlignment(Pos.CENTER);
-        //cheackBox();
-        //App.setRoot("primary");
         
     }
     
-    private void cheackBox(){
-        gPaneID.getChildren().forEach(item -> {
-            item.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent t) { 
-                    gPaneID.getChildren().add(new O("1").getImage());
-                }
-            });
-
-        });
+    public void readData() throws FileNotFoundException, IOException{
+        String[] list;
+        FileReader reader = new FileReader(App.pathJuego);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line;
+        line = bufferedReader.readLine();
+        list= line.split(",");
+        reader.close();
+        this.turno=list[1];
+        
+        definiendovalores(Integer.parseInt(list[0]), Integer.parseInt(list[2]));
     }
     
+    public void definiendovalores(int v1, int v2){
+        if(this.turno.equals("player")){
+            valorjugador=v1;
+            valorComputador=v2; 
+        }else{
+            valorjugador=v2;
+            valorComputador=v1;            
+        }        
+    }   
  
-    }
+}
     
 
     

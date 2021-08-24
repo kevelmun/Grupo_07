@@ -35,28 +35,33 @@ public class PrimaryController {
       boolean op4 = xOptionID.isSelected() && machineOptionID.isSelected();
       String signOption="";
       String startOption="";
+      String otherOptions="";
       
         if(op1){
-            signOption="o";
+            signOption="2";
             startOption="player";
+            otherOptions="1";
           
         }else if(op2){
-            signOption="x";
+            signOption="1";
             startOption="player";
+            otherOptions="2";
          
         }else if(op3){
-            signOption="o";
+            signOption="2";
             startOption="machine";
+            otherOptions="1";
            
         }else if(op4){
-            signOption="x";
+            signOption="1";
             startOption="machine";
+            otherOptions="2";
             
         }if(op1 || op2 || op3 || op4){
            
             try {
             FileWriter writer = new FileWriter(App.pathJuego, false);
-            writer.write(signOption+","+startOption);
+            writer.write(signOption+","+startOption+","+otherOptions);
             writer.close();
         } catch (IOException e) {
             
