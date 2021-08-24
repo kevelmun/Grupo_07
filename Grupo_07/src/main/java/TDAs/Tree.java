@@ -38,4 +38,8 @@ public class Tree<T> {
         return root.getChildren().isEmpty();
     }
     
+    public void addChild(T data) {
+        root.addChild(data);
+    }
+    
 }

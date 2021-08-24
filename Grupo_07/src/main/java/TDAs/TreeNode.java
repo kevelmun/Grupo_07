@@ -9,7 +9,7 @@ public class TreeNode<T> {
     
     private T content;
     private TreeNode<T> parent;
-    private List<TreeNode<T>> children;
+    private List<Tree<T>> children;
     
     public TreeNode() {
         content=null;
@@ -28,7 +28,7 @@ public class TreeNode<T> {
         children = new LinkedList<>();
     }
     
-    public TreeNode(T content,TreeNode<T> parent, List<TreeNode<T>> children) {
+    public TreeNode(T content,TreeNode<T> parent, List<Tree<T>> children) {
         this.content = content;
         this.children = children;
         this.parent = parent;
@@ -51,13 +51,13 @@ public class TreeNode<T> {
     }
     
     public void addChild(T data) {
-        TreeNode<T> child = new TreeNode<T>(data);
-        child.setParent(this);
+        Tree<T> child = new Tree(data);
+        child.getRoot().setParent(this);
         this.children.add(child);
     }
 
-    public void addChild(TreeNode<T> child) {
-        child.setParent(this);
+    public void addChild(Tree<T> child) {
+        child.getRoot().setParent(this);
         this.children.add(child);
     }
     
@@ -65,11 +65,11 @@ public class TreeNode<T> {
         return (this.parent == null);
     }
 
-    public List<TreeNode<T>> getChildren() {
+    public List<Tree<T>> getChildren() {
         return children;
     }
 
-    public void setChildren(List<TreeNode<T>> children) {
+    public void setChildren(List<Tree<T>> children) {
         this.children = children;
     }
     
