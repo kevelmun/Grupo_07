@@ -63,8 +63,13 @@ public class JugadaComputador {
     
     
     public Tablero predecirJugada(){
+        
         Tablero jugada=null;
         
+        Wins win = new Wins();
+        if(win.checkWin(jugada)){
+                    System.out.println("Gano"+win.getWinner());
+                }
         int utilidad=tree.getRoot().getContent().getUlilidad();
         for(Tree<Tablero> t1: tree.getRoot().getChildren()){
             System.out.println();
@@ -73,7 +78,9 @@ public class JugadaComputador {
             
             for(Tree<Tablero> t2: t1.getRoot().getChildren()){
                 imprimir(t2.getRoot().getContent().getA());
-                System.out.println();
+                System.out.println("");
+                
+                
                 
                 if(t2.getRoot().getContent().getUlilidad()>utilidad){
                     

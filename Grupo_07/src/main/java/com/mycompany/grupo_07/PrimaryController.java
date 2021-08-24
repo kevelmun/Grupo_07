@@ -48,14 +48,14 @@ public class PrimaryController {
             otherOptions="2";
          
         }else if(op3){
-            signOption="2";
-            startOption="machine";
-            otherOptions="1";
-           
-        }else if(op4){
             signOption="1";
             startOption="machine";
             otherOptions="2";
+           
+        }else if(op4){
+            signOption="2";
+            startOption="machine";
+            otherOptions="1";
             
         }if(op1 || op2 || op3 || op4){
            
