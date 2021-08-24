@@ -66,10 +66,7 @@ public class JugadaComputador {
         
         Tablero jugada=null;
         
-        Wins win = new Wins();
-        if(win.checkWin(jugada)){
-                    System.out.println("Gano"+win.getWinner());
-                }
+        
         int utilidad=tree.getRoot().getContent().getUlilidad();
         for(Tree<Tablero> t1: tree.getRoot().getChildren()){
             System.out.println();

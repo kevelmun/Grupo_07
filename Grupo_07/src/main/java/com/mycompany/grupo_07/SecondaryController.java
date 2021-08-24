@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import modelo.Wins;
 
 import objects.Tablero;
 
@@ -38,7 +37,7 @@ public class SecondaryController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         Tablero t=new Tablero(gPaneID);
         t.crearTablero();
-        
+  
         try {
             readData();
      
