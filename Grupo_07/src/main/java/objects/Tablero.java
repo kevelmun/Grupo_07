@@ -178,36 +178,32 @@ public class Tablero {
     
     public int pFilasColumna(int valor){
         int px=0;
-
         for (int i = 0; i < 3; i++) {
             int x=0, y=0;
             for (int j = 0; j < 3; j++) {
                 if(a[i][j]==0 || a[i][j]==valor)
                     x++;
-                else if(a[j][i]==0 || a[i][j]==valor)
+                if(a[j][i]==0 || a[j][i]==valor)
                     y++;
-                else
-                    break;
             }
             if(x==3 && y==3)
                 px+=2;
             else if(x==3 || y==3)
-                px++; 
+                px++;
         }
-        
         return px;   
     }
     public int pDiagonal(int valor){
         int px=0;
         int x=0,y=0;
         for (int i = 0; i < 3; i++) {
-            if(a[i][i]==valor)
+            if(a[i][i]==valor || a[i][i]==0)
                 x++;
-            else if(a[i][(2-1)]==valor)
+            if(a[i][(2-i)]==valor || a[i][(2-i)]==0)
                 y++;
         }        
         if(x==3 && y==3)
-                px+=2;
+            px+=2;
         else if(x==3 || y==3)
             px++;
         return px;
