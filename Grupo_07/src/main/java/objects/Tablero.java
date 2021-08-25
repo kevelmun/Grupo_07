@@ -121,7 +121,12 @@ public class Tablero {
     
     private int[] coordenadasJugada(Tablero t){
         int coordenadas[]=new int[2];
-        for (int i = 0; i < 3; i++) {
+        Wins win = new Wins();
+                
+        if(!(win.checkWin(this))){
+            //En la linea 128 trata de sabar la matriz "a" desde t, pero por alguna razon t es null y ocurre una Excepcion
+        try{
+            for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if(this.a[i][j]!=t.a[i][j]){
                     coordenadas[0]=i;
@@ -131,6 +136,14 @@ public class Tablero {
             }
             
         }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        }else{
+            System.out.println("GANO "+win.getWinner());
+        }
+        
+        
         return coordenadas;
     }
     

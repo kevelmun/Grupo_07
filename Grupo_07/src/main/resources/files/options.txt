@@ -1,1 +1,1 @@
-1,machine,2
+2,player,1
