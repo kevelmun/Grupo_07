@@ -72,6 +72,9 @@ public class JugadaComputador {
         
         int utilidad=-10;
         for(Tree<Tablero> t1: tree.getRoot().getChildren()){
+            if(tree.getRoot().getChildren().size()==1)
+                jugada=t1.getRoot().getContent();
+                
             System.out.println();
             imprimir(t1.getRoot().getContent().getA());
             System.out.println("----------------------------------------");
