@@ -77,8 +77,6 @@ public class JugadaComputador {
                 imprimir(t2.getRoot().getContent().getA());
                 System.out.println("");
                 
-                
-                
                 if(t2.getRoot().getContent().getUlilidad()>utilidad){
                     
                     utilidad=t2.getRoot().getContent().getUlilidad();
@@ -95,8 +93,8 @@ public class JugadaComputador {
     void imprimir(int[][] a){
         int[][] matriz=a;
        for (int x=0; x < matriz.length; x++) {
-           for (int y=0; y < matriz[x].length; y++) {
-               System.out.print (a[x][y] + " ");
+           for (int y=0; y < matriz.length; y++) {
+               System.out.print (a[y][x] + " ");
                
            }
            System.out.println();
