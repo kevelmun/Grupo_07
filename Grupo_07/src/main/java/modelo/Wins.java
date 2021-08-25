@@ -94,6 +94,9 @@ public class Wins {
     
     public boolean checkEmpate(Tablero tablero){
         int [][] a = tablero.getA();
+        if(checkWin(tablero)){
+            return false;
+        }
         if(a[0][0]!=0 && a[1][0]!=0 && a[2][0]!=0 && 
            a[0][1]!=0 && a[1][1]!=0 && a[2][1]!=0 &&
            a[0][2]!=0 && a[1][2]!=0 && a[2][2]!=0){
