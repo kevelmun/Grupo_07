@@ -23,9 +23,9 @@ public class JugadaComputador {
     public void CreandoExtados(){
         int valorComputador=tree.getRoot().getContent().getValorcomputador();
         int valorJugador=tree.getRoot().getContent().getValorJugador();
-        crearArbolExtendido(tree, valorComputador, valorJugador);
+        crearArbolExtendido(tree, valorComputador, valorJugador, 1);
         for (Tree<Tablero> t: tree.getRoot().getChildren()) {
-            crearArbolExtendido(t, valorComputador, valorJugador);
+            crearArbolExtendido(t, valorComputador, valorJugador,2);
         }
 
         
@@ -33,7 +33,7 @@ public class JugadaComputador {
     }
     
     
-    private void crearArbolExtendido(Tree<Tablero> t, int vc, int vj){
+    private void crearArbolExtendido(Tree<Tablero> t, int vc, int vj, int turno){
         
         for (int i=0; i < t.getRoot().getContent().getA().length; i++) {
             for (int j = 0; j < t.getRoot().getContent().getA()[i].length; j++) {
@@ -41,7 +41,10 @@ public class JugadaComputador {
                 if(t.getRoot().getContent().getA()[i][j]==0){
                     int [][]copia=copiarArreglo(t.getRoot().getContent().getA());
                     Tablero estado= new Tablero(copia);
-                    estado.getA()[i][j]=vc;
+                    if(turno == 1)
+                        estado.getA()[i][j]=vc;
+                    if(turno == 2)
+                        estado.getA()[i][j]=vj;
                     estado.ActualizarUtilidad(vc, vj);
                     t.addChild(estado);  
                 }    
