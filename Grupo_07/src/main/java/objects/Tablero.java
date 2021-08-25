@@ -5,8 +5,11 @@
  */
 package objects;
 
+import com.mycompany.grupo_07.App;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -110,23 +113,27 @@ public class Tablero {
     }
     
     public void jugadaMachine(){
-        JugadaComputador jugada=new JugadaComputador(this);
-        jugada.CreandoExtados();
-        Tablero t=jugada.predecirJugada();// obtengo el tablero en el que se debe hacer a jugada
-        int coordenadas[]=coordenadasJugada(t);//obtengo las coordenadas para cher la jugada
-        hacerJugada(coordenadas[0], coordenadas[1], Valorcomputador);
+        Wins win =new Wins();
         
+        if(!win.checkWin(this)){
+            JugadaComputador jugada=new JugadaComputador(this);
+            jugada.CreandoExtados();
+            Tablero t=jugada.predecirJugada();// obtengo el tablero en el que se debe hacer a jugada
+            if(t!=null){
+                int coordenadas[]=coordenadasJugada(t);//obtengo las coordenadas para cher la jugada
+                hacerJugada(coordenadas[0], coordenadas[1], Valorcomputador);
+                gano();
+
+            }
+        }else{
+            gano(win.getWinner());
+        }
         
     }
     
     private int[] coordenadasJugada(Tablero t){
         int coordenadas[]=new int[2];
-        Wins win = new Wins();
-                
-        if(!(win.checkWin(this))){
-            //En la linea 128 trata de sabar la matriz "a" desde t, pero por alguna razon t es null y ocurre una Excepcion
-        try{
-            for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if(this.a[i][j]!=t.a[i][j]){
                     coordenadas[0]=i;
@@ -136,18 +143,13 @@ public class Tablero {
             }
             
         }
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        }else{
-            System.out.println("GANO "+win.getWinner());
-        }
-        
         
         return coordenadas;
     }
     
     private void hacerJugada( int col, int row, int valor){
+        
+        
         Node n=null;
         for (Node node : grid.getChildren()) {
             if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
@@ -160,7 +162,10 @@ public class Tablero {
             else
                 grid.add(new X("2").getImage(), col, row);
             a[col][row]=valor; 
-        }  
+        }if(empate())
+            finalizar("Es un empate");
+            
+        
     }
     
     public void ActualizarUtilidad(int v1, int v2){
@@ -208,6 +213,45 @@ public class Tablero {
         return px;
             
         }
+    
+    public void gano(int ganador){
+        String nomGanador="Gano ";
+        if(ganador==ValorJugador)
+            nomGanador+="Jugador"; 
+        else
+            nomGanador+="Computador";
+        finalizar(nomGanador); 
+        
+    }
+    public void gano(){
+        Wins win =new Wins();
+        
+        if(win.checkWin(this)){
+            String nomGanador="Gano ";
+            if(win.getWinner()==ValorJugador)
+                nomGanador+="Jugador"; 
+            else
+                nomGanador+="Computador";
+            finalizar(nomGanador);
+        }
+        
+    }
+    
+    public void finalizar(String mensaje){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(mensaje);
+        alert.showAndWait();
+        try {
+            App.setRoot("primary");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public boolean empate(){
+        Wins win =new Wins();
+        return win.checkEmpate(this);
+        
+    }
     
     
      
