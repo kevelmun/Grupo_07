@@ -93,8 +93,9 @@ public class JugadaComputador {
     
     
     void imprimir(int[][] a){
-       for (int x=0; x < a.length; x++) {
-           for (int y=0; y < a[x].length; y++) {
+        int[][] matriz=a;
+       for (int x=0; x < matriz.length; x++) {
+           for (int y=0; y < matriz[x].length; y++) {
                System.out.print (a[x][y] + " ");
                
            }

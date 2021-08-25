@@ -81,11 +81,23 @@ public class Wins {
         }
         return false;
     }
-
+    
     private static boolean cheackWinDiagonalS(Tablero tablero, int n) {
         int[][] a = tablero.getA();
         
         if(a[2][0]==n && a[1][1]==n && a[0][2]==n){
+            return true;
+           
+        }
+        return false;
+    }
+    
+    public boolean checkEmpate(Tablero tablero){
+        int [][] a = tablero.getA();
+        if(a[0][0]!=0 && a[1][0]!=0 && a[2][0]!=0 && 
+           a[0][1]!=0 && a[1][1]!=0 && a[2][1]!=0 &&
+           a[0][2]!=0 && a[1][2]!=0 && a[2][2]!=0){
+             this.winner=3;
             return true;
         }
         return false;

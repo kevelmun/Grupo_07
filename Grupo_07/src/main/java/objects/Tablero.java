@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import modelo.JugadaComputador;
+import modelo.Wins;
 
 /**
  *
@@ -70,7 +71,8 @@ public class Tablero {
      
     
     public void crearTablero(){//Configurando y definiendo el grid pane
-
+        Wins w = new Wins();
+        if(!(w.checkWin(this) || w.checkEmpate(this))){
         for (int i = 0 ; i < 3 ; i++) {
             ColumnConstraints colConstraints = new ColumnConstraints();
             colConstraints.setHgrow(Priority.SOMETIMES);
@@ -82,13 +84,18 @@ public class Tablero {
             rowConstraints.setVgrow(Priority.SOMETIMES);
             grid.getRowConstraints().add(rowConstraints);
         }
-
-        for (int i = 0 ; i < 3 ; i++) {//Para añadir un panel a cada celda y asociaes un evento de click
+        
+            for (int i = 0 ; i < 3 ; i++) {//Para añadir un panel a cada celda y asociaes un evento de click
             for (int j = 0; j < 3; j++) {
                 addPane(i, j);
                 a[i][j]=0;
             }
         }
+        
+        }else if(w.checkWin(this) || w.checkEmpate(this)){
+            System.out.println(w.getWinner());
+        }
+        System.out.println("AQUIIIIIIIIIIII");
         
     }
     
