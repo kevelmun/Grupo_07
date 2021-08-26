@@ -15,9 +15,10 @@ public class App extends Application {
 
     private static Scene scene;
     public static String pathJuego = "src/main/resources/files/options.txt";
+    public static String pathMenu = "src/main/resources/files/menu.txt";
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 750, 550);
+        scene = new Scene(loadFXML("menu"), 750, 550);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

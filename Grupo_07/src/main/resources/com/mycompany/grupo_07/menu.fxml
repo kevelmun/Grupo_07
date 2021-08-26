@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="571.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.grupo_07.MenuController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="TRES " textFill="#f84434">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="38.0" />
+               </font>
+            </Label>
+            <Label text="EN " textFill="#607484">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="38.0" />
+               </font>
+            </Label>
+            <Label text="RAYA" textFill="#2894f4">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="38.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="MODO DE JUEGO" textFill="#607484">
+               <font>
+                  <Font name="Stencil" size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="38.0" prefWidth="682.0" spacing="50.0">
+               <children>
+                  <RadioButton fx:id="PvPID" mnemonicParsing="false" text="Player vs player" textFill="#607484">
+                     <font>
+                        <Font name="Showcard Gothic" size="12.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="beggins" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="PvCID" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="player vs computer" textFill="#607484" toggleGroup="$beggins">
+                     <font>
+                        <Font name="Showcard Gothic" size="12.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="120.0" />
+         </VBox.margin>
+      </VBox>
+      <Button fx:id="playButtonID" alignment="CENTER" contentDisplay="BOTTOM" onAction="#jugar" prefHeight="27.0" prefWidth="100.0" text="JUGAR!!!" textAlignment="CENTER" textFill="#2894f4">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="150.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

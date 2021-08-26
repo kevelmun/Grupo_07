@@ -28,18 +28,20 @@ public class Tablero {
     private int ulilidad;
     private int ValorJugador;
     private int Valorcomputador;
+    private boolean playerVSplayer;
     
     //contructores
      public Tablero(GridPane grid){
          this.grid=grid;
          a = new int[3][3];
+         this.playerVSplayer=false;
     }
      public Tablero(GridPane grid, int Valorcomputador, int valorJugador){
          this.grid=grid;
          a = new int[3][3];
          this.Valorcomputador=Valorcomputador;
          this.ValorJugador=valorJugador;
-         
+         this.playerVSplayer=false;
      }
      public Tablero(int matrix[][]){
          this.a = matrix;
@@ -69,6 +71,11 @@ public class Tablero {
     public void setValorcomputador(int Valorcomputador) {
         this.Valorcomputador = Valorcomputador;
     }
+
+    public void setPlayerVSplayer(boolean playerVSplayer) {
+        this.playerVSplayer = playerVSplayer;
+    }
+    
     
     
      
@@ -105,9 +112,16 @@ public class Tablero {
     private void addPane(int colIndex, int rowIndex) {
         Pane pane = new Pane();
         pane.setOnMouseClicked(e -> {
-            hacerJugada(colIndex, rowIndex, ValorJugador);
-            jugadaMachine();
-            System.out.printf("Mouse enetered cell [%d, %d]%n", colIndex, rowIndex);
+            if(playerVSplayer){
+                hacerJugada(colIndex, rowIndex, ValorJugador);
+                ganoPlayerVsPlayer();
+                cambiarValor();
+            }if(!playerVSplayer){
+                hacerJugada(colIndex, rowIndex, ValorJugador);
+                jugadaMachine();
+                System.out.printf("Mouse enetered cell [%d, %d]%n", colIndex, rowIndex);
+            }
+            
         });
         grid.add(pane, colIndex, rowIndex);
     }
@@ -233,12 +247,26 @@ public class Tablero {
         
     }
     
+    public void ganoPlayerVsPlayer(){
+        Wins win =new Wins();
+        
+        if(win.checkWin(this)){
+            String nomGanador="Gano ";
+            if(win.getWinner()==1)
+                nomGanador+="X"; 
+            else
+                nomGanador+="O";
+            finalizar(nomGanador);
+        }
+        
+    }
+    
     public void finalizar(String mensaje){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(mensaje);
         alert.showAndWait();
         try {
-            App.setRoot("primary");
+            App.setRoot("menu");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -247,6 +275,13 @@ public class Tablero {
         Wins win =new Wins();
         return win.checkEmpate(this);
         
+    }
+    
+    public void cambiarValor(){
+        if(ValorJugador==1)
+            ValorJugador=2;
+        else
+            ValorJugador=1;
     }
     
     

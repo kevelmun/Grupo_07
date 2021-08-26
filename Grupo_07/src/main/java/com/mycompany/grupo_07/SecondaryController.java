@@ -31,28 +31,43 @@ public class SecondaryController implements Initializable{
     private String turno;
     private int valorjugador;
     private int valorComputador;
-    
+    private String modoJuego;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Tablero t=new Tablero(gPaneID);
-        t.crearTablero();
-  
+        
+        
         try {
-            readData();
-     
-            t.setValorJugador(valorjugador);
-            t.setValorcomputador(valorComputador);
-            
-            if(this.turno.equals("machine")){
-                t.jugadaMachine();
-                
-                
-            }
+            readMenu();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
+        if(modoJuego.equals("pvp")){
+            
+            Tablero t=new Tablero(gPaneID);
+            t.setPlayerVSplayer(true);
+            t.crearTablero();
+            
+            t.setValorJugador(1);
+            
+            
+        }if (modoJuego.equals("pvc")){
+            Tablero t=new Tablero(gPaneID);
+            t.crearTablero();
+            try {
+                readData();
+
+                t.setValorJugador(valorjugador);
+                t.setValorcomputador(valorComputador);
+
+                if(this.turno.equals("machine")){
+                    t.jugadaMachine();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        }
         
     }
     
@@ -67,6 +82,15 @@ public class SecondaryController implements Initializable{
         this.turno=list[1];
         
         definiendovalores(Integer.parseInt(list[0]), Integer.parseInt(list[2]));
+    }
+    
+    public void readMenu() throws FileNotFoundException, IOException{
+        FileReader reader = new FileReader(App.pathMenu);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line;
+        line = bufferedReader.readLine();
+        modoJuego = line;
+        reader.close();
     }
     
     public void definiendovalores(int v1, int v2){

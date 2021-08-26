@@ -55,7 +55,7 @@
             </RadioButton>
          </children>
       </HBox>
-      <Label layoutX="287.0" layoutY="208.0" text="Quien comienza??" textFill="#607484">
+      <Label layoutX="287.0" layoutY="208.0" text="¿Quien comienza?" textFill="#607484">
          <font>
             <Font name="Stencil" size="18.0" />
          </font>
