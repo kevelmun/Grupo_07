@@ -41,6 +41,13 @@ public class MenuController {
             alert.setHeaderText("X empieza el juego");
             alert.showAndWait();
             try {
+            FileWriter writer = new FileWriter(App.pathMenu, false);
+            writer.write(opcion);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(); 
+        }
+            try {
                 App.setRoot("secondary");
             } catch (IOException ex) {
                 ex.printStackTrace();

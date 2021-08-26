@@ -35,7 +35,8 @@ public class SecondaryController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        Tablero t=new Tablero(gPaneID);
+        t.crearTablero();
         
         try {
             readMenu();
@@ -43,17 +44,9 @@ public class SecondaryController implements Initializable{
             ex.printStackTrace();
         }
         if(modoJuego.equals("pvp")){
-            
-            Tablero t=new Tablero(gPaneID);
             t.setPlayerVSplayer(true);
-            t.crearTablero();
-            
             t.setValorJugador(1);
-            
-            
-        }if (modoJuego.equals("pvc")){
-            Tablero t=new Tablero(gPaneID);
-            t.crearTablero();
+        }else if (modoJuego.equals("pvc")){
             try {
                 readData();
 
